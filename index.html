@@ -1,8 +1,46 @@
-<html>
-  <head>
-    <title>MyLogicDream</title>
-  </head>
-  <body>
-    <h1>这是MyLogicDream的个人主页</h1>
-  </body>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>显示文本文件内容</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        #content {
+            white-space: pre-wrap;
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>文本文件内容</h1>
+    <div id="content">加载中...</div>
+
+    <script>
+        fetch('a.txt')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('无法加载文件');
+                }
+                return response.text();
+            })
+            .then(text => {
+                document.getElementById('content').textContent = text;
+            })
+            .catch(error => {
+                document.getElementById('content').textContent = '错误: ' + error.message;
+            });
+    </script>
+</body>
 </html>
