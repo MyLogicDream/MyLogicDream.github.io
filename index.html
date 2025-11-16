@@ -1,46 +1,44 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>显示文本文件内容</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f0f0f0;
-        }
-        #content {
-            white-space: pre-wrap;
-            background-color: white;
-            padding: 20px;
-            border: 1px solid #ccc;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>读取同级目录 a.txt</title>
+<style>
+    body{font-family:Arial,Helvetica,sans-serif;margin:30px;background:#f5f5f5}
+    h1{font-size:1.4em;color:#333}
+    #content{background:#fff;border:1px solid #ccc;padding:15px;white-space:pre-wrap;max-width:800px;margin:0 auto}
+    .error{color:#c00;font-weight:bold}
+</style>
 </head>
 <body>
-    <h1>文本文件内容</h1>
-    <div id="content">加载中...</div>
+<h1>文本文件内容</h1>
+<div id="content">加载中…</div>
 
-    <script>
-        fetch('a.txt')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('无法加载文件');
-                }
-                return response.text();
-            })
-            .then(text => {
-                document.getElementById('content').textContent = text;
-            })
-            .catch(error => {
-                document.getElementById('content').textContent = '错误: ' + error.message;
-            });
-    </script>
+<script>
+const url = 'a.txt';          // 同级目录
+fetch(url)
+    .then(resp => {
+        if (!resp.ok) {         // 404、500 等都会进这里
+            throw new Error(`HTTP 错误！状态码：${resp.status} ${resp.statusText}`);
+        }
+        return resp.text();
+    })
+    .then(txt => {
+        document.getElementById('content').textContent = txt;
+    })
+    .catch(err => {
+        let msg = err.message;
+
+        /* 常见浏览器安全限制：file:// 协议下 fetch 被禁 */
+        if (location.protocol === 'file:' && msg.includes('fetch')) {
+            msg += '\n\n原因：你当前用 file:// 协议打开网页，Chrome/Edge 等浏览器禁止本地 fetch。' +
+                   '\n解决：1. 用 VS Code Live Server / Python http.server 等启动本地 HTTP 服务；' +
+                   '\n      2. 或者把文件放到真正的 Web 服务器目录。';
+        }
+        const box = document.getElementById('content');
+        box.textContent = '无法加载 a.txt\n\n' + msg;
+        box.classList.add('error');
+    });
+</script>
 </body>
 </html>
