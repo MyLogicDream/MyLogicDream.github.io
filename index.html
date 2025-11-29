@@ -1,20 +1,70 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
-        <meta charset="UTF-8">
-        <title>MyLogicDream</title>
-        <style>
-            body{
-               background:rgb(255,255,255);
-            }
-            h1{
-                text-align:center;
-                color:rgb(50,50,255);
-            }
-        </style>
-    </head>
-    <body>
-        <h1>大家好啊，这里是MyLogicDream的个人主页</h1>
-        <p style="color:rgb(255,0,0);">此网站正在施工</p>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>极简绿色博客</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; background: #f0f8f0; color: #333; }
+        header { background: #2e7d32; color: white; padding: 15px 20px; }
+        nav a { color: white; margin-right: 20px; text-decoration: none; }
+        .hero { text-align: center; padding: 40px 20px; background: white; }
+        .hero img { max-width: 100%; height: 300px; object-fit: cover; border-radius: 8px; }
+        .articles { max-width: 800px; margin: 20px auto; padding: 0 20px; }
+        .article-item { background: white; margin: 10px 0; padding: 15px; border-left: 4px solid #4caf50; }
+        .info-boxes { display: flex; justify-content: center; gap: 20px; padding: 20px; flex-wrap: wrap; }
+        .info-box { background: white; padding: 20px; width: 250px; border-top: 4px solid #66bb6a; }
+        footer { background: #2e7d32; color: white; text-align: center; padding: 20px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#">首页</a>
+            <a href="#">文章</a>
+            <a href="#">关于</a>
+            <a href="#">联系</a>
+        </nav>
+    </header>
+<h1 style="color:#2e7d32;text-align:center;font-size:60px;">DogCC Blog</h1>
+    <!-- 替换原 hero 和后续 articles 区块 -->
+<div style="max-width:1000px;margin:20px auto;display:flex;gap:20px;padding:0 20px;">
+    <img src="https://cdn.luogu.com.cn/upload/image_hosting/t5svwghy.png" style="width:700px;height:400px;object-fit:cover;border-radius:8px;>
+    <div style="flex:1;background:white;padding:20px;border-left:4px solid #4caf50;">
+        <div style="margin-bottom:15px;">
+            <h3>珍爱生命，远离OI</h3>
+            <p>CFF如何用脚出题……</p>
+        </div>
+        <div>
+            <h3>不要公开点赞流萤cos</h3>
+            <p>不然会被豪哥看见...</p>
+        </div>
+    </div>
+</div>
+    <div class="info-boxes">
+        <div class="info-box">
+            <h3>NOIP落幕</h3>
+            <p>一黄三黑，本年难度大幅增加</p>
+        </div>
+        <div class="info-box">
+            <h3>环保活动</h3>
+            <p>参与社区环保活动，共建美好家园</p>
+        </div>
+        <div class="info-box">
+            <h3>绿色产品</h3>
+            <p>发现更多环保产品，让生活更加可持续</p>
+        </div>
+    </div>
+
+    <div class="articles">
+        <div class="article-item">
+            <h3></h3>
+            <p><a href="https://www.luogu.com.cn/article/ontsqygs">【黑粉】（整活）我的网恋对象不可能是男孩子！</a></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; DogCC Blog</p>
+    </footer>
+</body>
 </html>
